@@ -40,16 +40,6 @@ def lines_printed_custom(lines_list):
     for i in sorted_list:
         print(i)
 
-# # calls the get_file_lines function which stores the contents of poem.txt into the lines_list dictionary
-# get_file_lines("poem.txt")
-
-# # calls the function to print the contents of the lines_list dictionary in reverse
-# lines_printed_backwards(lines_list)
-
-# # calls the function to print the contents of the lines_list dictionary in random order
-# lines_printed_random(lines_list)
-# lines_printed_custom(lines_list)
-
 get_file_lines("poem.txt")
 print("Welcome to the poetry slam!")
 print("If you would like to read the poem in original form, please enter 1.")
