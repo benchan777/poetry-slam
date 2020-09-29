@@ -46,20 +46,23 @@ def lines_printed_custom(lines_list):
 
 # this function prints the poem line by line with each line having the words rearranged in a random order
 def lines_printed_scrambled(filename):
-    temp = []
-    line_count = 0
+    temp = [] # initialize empty list
+    line_count = 0 # initialize line count
     with open(filename, "r") as openfile:
-        lines = openfile.readline()
-        while line_count < len(lines_list) - 1:
-            for word in lines.split():
-                temp.append(word)
-            random.shuffle(temp)
-            joined_temp = " ".join(temp)
-            print(joined_temp)
-            print(joined_temp, file = open("scrambled poem.txt", "a"))
-            line_count += 1
-            temp.clear()
-            lines = next(openfile)
+        lines = openfile.readline() # assigns the first line of the text file to the variable "lines"
+        while line_count < len(lines_list): # repeats this function x numbers of times, with x being the number of lines conatined in the poem
+            for word in lines.split(): # splits the line of text into individual words
+                temp.append(word) # adds each word to the temp list
+            random.shuffle(temp) # reorders all the words in the list
+            joined_temp = " ".join(temp) # combines the rearranged words into a single string
+            print(joined_temp) # prints the string 
+            print(joined_temp, file = open("scrambled poem.txt", "a")) # prints the string to a text file
+            line_count += 1 # adds one to the line counter
+            temp.clear() # clears the temporary list
+            try:
+                lines = next(openfile) # assigns the next line in the text file to the variable "lines"
+            except:
+                break
 
 get_file_lines("poem.txt")
 
