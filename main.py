@@ -40,12 +40,36 @@ def lines_printed_custom(lines_list):
     for i in sorted_list:
         print(i)
 
-# calls the get_file_lines function which stores the contents of poem.txt into the lines_list dictionary
+# # calls the get_file_lines function which stores the contents of poem.txt into the lines_list dictionary
+# get_file_lines("poem.txt")
+
+# # calls the function to print the contents of the lines_list dictionary in reverse
+# lines_printed_backwards(lines_list)
+
+# # calls the function to print the contents of the lines_list dictionary in random order
+# lines_printed_random(lines_list)
+# lines_printed_custom(lines_list)
+
 get_file_lines("poem.txt")
+print("Welcome to the poetry slam!")
+print("If you would like to read the poem in original form, please enter 1.")
+print("If you would like to read the poem in reverse, please enter 2.")
+print("If you would like to read the poem in random order, please enter 3.")
+print("If you would like all the words of the poem sorted into alphabetical order, please enter 4.")
 
-# calls the function to print the contents of the lines_list dictionary in reverse
-lines_printed_backwards(lines_list)
+while True:
+    option_select = input("Enter your selection here: ")
 
-# calls the function to print the contents of the lines_list dictionary in random order
-lines_printed_random(lines_list)
-lines_printed_custom(lines_list)
+    if option_select == "1":
+        print(lines_list)
+        break
+    elif option_select == "2":
+        lines_printed_backwards(lines_list)
+        break
+    elif option_select == "3":
+        lines_printed_random(lines_list)
+        break
+    elif option_select == "4":
+        lines_printed_custom(lines_list)
+        break
+    print("Please only enter a number from 1-4!")
