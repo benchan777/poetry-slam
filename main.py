@@ -17,6 +17,7 @@ def get_file_lines(filename):
 def lines_printed_backwards(lines_list):
     for key, value in reversed(lines_list.items()):
         print(f"{key}: {value}")
+        print(f"{key}: {value}", file = open("backwards poem.txt", "a"))
 
 # this function prints out the lines of the poem in random order
 def lines_printed_random(lines_list):
@@ -27,6 +28,7 @@ def lines_printed_random(lines_list):
     while line_count <= len(lines_list):
         index = random.randint(1, len(lines_list))
         print(f"{index}: {lines_list[index]}")
+        print(f"{index}: {lines_list[index]}", file = open("random poem.txt", "a"))
         line_count += 1
 
 # this function appends the dictionary values into a list, joins all list items into a long string
@@ -40,41 +42,33 @@ def lines_printed_custom(lines_list):
     word_list_split = poem_string.split()
     sorted_list = sorted(word_list_split)
     print(sorted_list)
-
-def individual_lines_printed_random(lines_list):
-
-
-# does the same thing as lines_printed_backwards function, just prints it out to a file instead
-def save_reverse_poem_to_file(lines_list):
-    for key, value in reversed(lines_list.items()):
-        print(f"{key}: {value}", file = open("backwards poem.txt", "a"))
-
-# does the same thing as the lines_printed_random function, just prints it out to a file instead
-def save_random_poem_to_file(lines_list):
-    line_count = 1
-
-    while line_count <= len(lines_list):
-        index = random.randint(1, len(lines_list))
-        print(f"{index}: {lines_list[index]}", file = open("random poem.txt", "a"))
-        line_count += 1
-
-# does the same thing as the lines_printed_custom function, just prints it out to a file instead
-def save_alphabetical_to_file(lines_list):
-    word_list = []
-    word_list_split = []
-    for key, value in lines_list.items():
-        word_list.append(value)
-    poem_string = ''.join(word_list)
-    word_list_split = poem_string.split()
-    sorted_list = sorted(word_list_split)
     print(sorted_list, file = open("alphabetized letters.txt", "a"))
 
+# this function prints the poem line by line with each line having the words rearranged in a random order
+def lines_printed_scrambled(filename):
+    temp = []
+    line_count = 0
+    with open(filename, "r") as openfile:
+        lines = openfile.readline()
+        while line_count < len(lines_list) - 1:
+            for word in lines.split():
+                temp.append(word)
+            random.shuffle(temp)
+            joined_temp = " ".join(temp)
+            print(joined_temp)
+            print(joined_temp, file = open("scrambled poem.txt", "a"))
+            line_count += 1
+            temp.clear()
+            lines = next(openfile)
+
 get_file_lines("poem.txt")
+
 print("Welcome to the poetry slam!")
 print("If you would like to read the poem in original form, please enter 1.")
 print("If you would like to read the poem in reverse, please enter 2.")
 print("If you would like to read the poem in random order, please enter 3.")
 print("If you would like all the words of the poem sorted into alphabetical order, please enter 4.")
+print("If you would like to read the poem with each line randomly rearranged, please enter 5.")
 
 while True:
     option_select = input("Enter your selection here: ")
@@ -91,25 +85,7 @@ while True:
     elif option_select == "4":
         lines_printed_custom(lines_list)
         break
-    print("Please only enter a number from 1-4!")
-
-print("Would you like to save this output to a file? ")
-
-while True:
-    save_file = input("Please enter yes or no: ")
-
-    if save_file == "yes" and option_select == "2":
-        save_reverse_poem_to_file(lines_list)
-        print("The poem has been saved to 'backwards poem.txt!'")
+    elif option_select == "5":
+        lines_printed_scrambled("poem.txt")
         break
-    if save_file == "yes" and option_select == "3":
-        save_random_poem_to_file(lines_list)
-        print("The poem has been saved to 'random poem.txt!'")
-        break
-    if save_file == "yes" and option_select == "4":
-        save_alphabetical_to_file(lines_list)
-        print("The alphabetized letters have been saved to 'alphabetized letters.txt!'")
-        break
-    elif save_file == "no":
-        break
-    print("Please enter yes or no.")
+    print("Please only enter a number from 1-5!")
