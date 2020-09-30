@@ -8,6 +8,7 @@ This program will take a poem located in a text file and print it out in various
 * In random order
 * In a list that contains all words in the poem, sorted in alphabetical order
 * In original form, but with each line randomly rearranged
+
 The program will also save all outputs into a new text file.
 
 ## Usage
