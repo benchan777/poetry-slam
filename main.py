@@ -37,12 +37,12 @@ def lines_printed_custom(lines_list):
     word_list = []
     word_list_split = []
     for key, value in lines_list.items():
-        word_list.append(value)
-    poem_string = ''.join(word_list)
-    word_list_split = poem_string.split()
-    sorted_list = sorted(word_list_split)
-    print(sorted_list)
-    print(sorted_list, file = open("alphabetized letters.txt", "a"))
+        word_list.append(value) # takes the value from the lines_list dictionary and adds it to the word_list list
+    poem_string = ''.join(word_list) # converts word_list into a string
+    word_list_split = poem_string.split() # converts string into a list of individual words
+    sorted_list = sorted(word_list_split) # sorts list of words into alphabetical order
+    print(sorted_list) # prints alphabetically sorted list
+    print(sorted_list, file = open("alphabetized letters.txt", "a")) # prints alphabetically sorted list into a new text file
 
 # this function prints the poem line by line with each line having the words rearranged in a random order
 def lines_printed_scrambled(filename):
@@ -73,6 +73,7 @@ print("If you would like to read the poem in random order, please enter 3.")
 print("If you would like all the words of the poem sorted into alphabetical order, please enter 4.")
 print("If you would like to read the poem with each line randomly rearranged, please enter 5.")
 
+# prompts user to select a function to run and prompts the user to enter again if they enter an unsupported input
 while True:
     option_select = input("Enter your selection here: ")
 
