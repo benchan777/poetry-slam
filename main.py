@@ -13,6 +13,11 @@ def get_file_lines(filename):
             line_count += 1
     return lines_list
 
+# this function prints the value of the dictionary in original order
+def lines_printed_original(lines_list):
+    for key, value in lines_list.items():
+        print(value)
+
 # this function prints the key and value of the dictionary in reverse order
 def lines_printed_backwards(lines_list):
     for key, value in reversed(lines_list.items()):
@@ -78,7 +83,7 @@ while True:
     option_select = input("Enter your selection here: ")
 
     if option_select == "1":
-        print(lines_list)
+        lines_printed_original(lines_list)
         break
     elif option_select == "2":
         lines_printed_backwards(lines_list)
