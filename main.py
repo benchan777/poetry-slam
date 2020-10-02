@@ -31,8 +31,8 @@ def lines_printed_random(lines_list):
     # this while loop selects a random integer between 1 and the length of the list, the prints out the line
     # repeats until the number of random lines is equal to the number of lines in the original poem
     while line_count <= len(lines_list):
-        index = random.randint(1, len(lines_list))
-        print(f"{index}: {lines_list[index]}")
+        index = random.randint(1, len(lines_list)) # uses the randomint() function to pick a random number between 1 and the number of lines there are in the poem and assigns it to an index
+        print(f"{index}: {lines_list[index]}") # print index of the dictionary
         print(f"{index}: {lines_list[index]}", file = open("random poem.txt", "a"))
         line_count += 1
 
